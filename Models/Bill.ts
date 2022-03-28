@@ -7,6 +7,6 @@ const knex = new Connect().knex;
 const bookshelf = Bookshelf(knex)
 
 export class Bill extends bookshelf.Model<Bill> {
-    get tableName() { return 'bill'; }
+    get tableName() { return 'Bill'; }
 
 }

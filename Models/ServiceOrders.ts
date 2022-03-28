@@ -7,6 +7,6 @@ const knex = new Connect().knex;
 const bookshelf = Bookshelf(knex)
 
 export class ServiceOrders extends bookshelf.Model<ServiceOrders> {
-    get tableName() { return 'serviceorders'; }
+    get tableName() { return 'Serviceorders'; }
 
 }

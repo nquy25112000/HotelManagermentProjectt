@@ -1,10 +1,10 @@
 import express from 'express';
 import { Router } from "express";
 import { RoleController } from "../Controllers/Role"
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
 
 
-const roleController = new RoleController();
+const Controller = new RoleController();
 
 
 export class RoleRouter {
@@ -17,11 +17,10 @@ export class RoleRouter {
     }
 
     routers() {
-        this.RoleRouter.get('/findall', roleController.findAllRole);
-        this.RoleRouter.post('/create', roleController.createRole);
-
-
+        this.RoleRouter.get('/getAll', Controller.findAllRole);
+        this.RoleRouter.post('/create', Controller.createRole);
     }
+
     public config(): void {
         this.RoleRouter.use(express.json());
         this.RoleRouter.use(bodyParser.urlencoded({ extended: true }));

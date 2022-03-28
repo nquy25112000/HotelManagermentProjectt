@@ -1,14 +1,21 @@
 import { Role } from '../Models/Role'
-import { KnexRepository } from '../Repositories/KnexRepository'
-import { Connect } from '../Config/connect'
+import { RoleRepository } from '../Repositories/Repository/Role';
 
-const knex = new Connect().knex;
+const Repository = new RoleRepository();
 
 
-export class RoleService extends KnexRepository<Role> {
+export class RoleService {
     constructor() {
-        super('role')
     }
 
+    public getRoles = async () => {
+        const rs = await Repository.findAll();
+        return rs;
+    }
+
+    public createRoles = async (item: Role[]) => {
+        const rs = await Repository.create(item);
+        return rs;
+    }
 
 }

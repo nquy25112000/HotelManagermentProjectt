@@ -9,7 +9,7 @@ const knex = new Connect().knex;
 const bookshelf = Bookshelf(knex)
 
 export class BookRoom extends bookshelf.Model<BookRoom> {
-    get tableName() { return 'bookroom'; }
+    get tableName() { return 'BookRoom'; }
 
     service(): Bookshelf.Collection<ServiceOrders> {
         return this.hasMany(ServiceOrders, 'bookRoomId');

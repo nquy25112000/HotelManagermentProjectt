@@ -1,6 +1,13 @@
 import express from 'express';
-import { RoleRouter } from './Router/roleRouter';
-const bodyParser = require('body-parser');
+import { RoleRouter } from './Router/Role';
+import { UsersRouter } from './Router/Users'
+import { HotelRouter } from './Router/Hotel'
+
+import bodyParser from 'body-parser';
+
+const roleRouter = new RoleRouter();
+const usersRouter = new UsersRouter();
+const holtelRouter = new HotelRouter();
 
 class Server {
     public app: express.Application
@@ -19,7 +26,9 @@ class Server {
     }
 
     public router(): void {
-        this.app.use('/api/role', new RoleRouter().RoleRouter)
+        this.app.use('/role', roleRouter.RoleRouter)
+        this.app.use('/users', usersRouter.UsersRouter)
+        this.app.use('/hotel', holtelRouter.HotelRouter)
 
     }
     public start(): void {

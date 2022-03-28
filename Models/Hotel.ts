@@ -11,15 +11,15 @@ const knex = new Connect().knex;
 const bookshelf = Bookshelf(knex)
 
 export class Hotel extends bookshelf.Model<Hotel> {
-    get tableName() { return 'hotel'; }
+    get tableName() { return 'Hotel'; }
 
     users(): Bookshelf.Collection<Users> {
         return this.hasMany(Users, 'hotelId');
     }
     room(): Bookshelf.Collection<Room> {
-        return this.hasMany(Room, 'idHotel');
+        return this.hasMany(Room, 'holtelId');
     }
     service(): Bookshelf.Collection<Service> {
-        return this.hasMany(Service, 'idHotel');
+        return this.hasMany(Service, 'holtelId');
     }
 }

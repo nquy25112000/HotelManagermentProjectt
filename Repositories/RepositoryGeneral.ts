@@ -1,4 +1,4 @@
-export interface Repository<T> {
+export interface RepositoryGeneral<T> {
     delete(id: string): Promise<boolean>
     findAll(): Promise<boolean>
     create(item: T[]): Promise<T[]>

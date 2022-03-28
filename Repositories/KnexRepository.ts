@@ -1,8 +1,10 @@
-import { Repository } from './Repository'
+import { RepositoryGeneral } from './RepositoryGeneral'
 import { Connect } from '../Config/connect'
+
+
 const knex = new Connect().knex;
 
-export abstract class KnexRepository<T> implements Repository<T> {
+export abstract class KnexRepository<T> implements RepositoryGeneral<T> {
     constructor(
         public tableName: string
     ) { this.tableName = tableName; }
@@ -12,10 +14,12 @@ export abstract class KnexRepository<T> implements Repository<T> {
             .where('uuid', id)
             .del()
     }
+
     findAll(): Promise<boolean> {
         return knex(this.tableName)
             .select()
     }
+
     create(item: T[]): Promise<T[]> {
         return knex(this.tableName)
             .insert(item)
